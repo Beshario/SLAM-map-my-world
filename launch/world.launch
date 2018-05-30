@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <launch>
-
+  <include file="$(find slam_project)/launch/robot_description.launch"/>
   <arg name="world" default="empty"/> 
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
@@ -9,30 +9,22 @@
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
 
-  <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find slam_project)/worlds/empty.world"/>
+<include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find slam_project)/worlds/jackal_race.world"/>
     <arg name="paused" value="$(arg paused)"/>
     <arg name="use_sim_time" value="$(arg use_sim_time)"/>
     <arg name="gui" value="$(arg gui)"/>
     <arg name="headless" value="$(arg headless)"/>
     <arg name="debug" value="$(arg debug)"/>
   </include>
-amera
-<include file="$(find slam_project)/launch/robot_description.launch"/>
 
-<!--spawn a robot in gazebo world-->
+  <!--spawn a robot in gazebo world-->
 
-<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" 
-output="screen" args="-urdf -param robot_description -model udacity_bot"/>
 
-<!-- scanner from depth image  -->
+   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" 
+   output="screen" args="-urdf -param robot_description -model udacity_bot"/>
 
-  <!-- Arguments for launch file with defaults provided -->
-  <arg name="depth_topic" default="/camera/depth/image_raw"/>
-  <arg name="camera_info_topic" default="/camera/depth/camera_info"/>  
-  <node name="depthimage_to_laserscan" pkg="depthimage_to_laserscan" type="depthimage_to_laserscan"/>
-  <!-- inputs -->
-        <remap from="image"     to="$(arg depth_topic)"/>
-        <remap from="camera_info" to="$(arg camera_info_topic)"/>
+   <!--launch rviz-->
+   <node name="rviz" pkg="rviz" type="rviz"/>
 </launch>
 

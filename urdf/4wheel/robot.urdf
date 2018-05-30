@@ -1,0 +1,237 @@
+<?xml version='1.0'?>
+
+<robot name="udacity_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:include filename="$(find udacity_bot)/urdf/udacity_bot.gazebo" />
+
+  <link name="robot_footprint"></link>
+
+  <joint name="robot_footprint_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="robot_footprint"/>
+    <child link="chassis" />
+  </joint>
+	<link name='chassis'>
+		<inertial>
+		  <mass value="0.489"/>
+		  <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+		  <inertia
+			  ixx="0.1" ixy="0" ixz="0"
+			  iyy="0.1" iyz="0"
+			  izz="0.1"
+		  />
+		</inertial>
+
+		<collision name='chassis_collision'>
+		  <origin xyz="0 0 0" rpy=" 0 0 0"/> 
+     		 <geometry>
+     		   <box size=".24 .1 .02"/>
+    		  </geometry>
+		</collision>
+
+		<visual name='chassis_visual'>
+		  <origin xyz="0 0 0" rpy=" 0 0 0"/>
+		  <geometry>
+			<box size=".24 .1 .02"/>
+		  </geometry>
+		</visual>
+	</link>
+
+	<link name='rightb_wheel'>
+		<visual >
+			  <geometry>
+				<cylinder length="0.025" radius="0.0335"/>
+			  </geometry>
+		</visual>
+		
+		<inertial>
+			  <mass value="0.033"/>
+			  <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+			  <inertia
+				  ixx="0.1" ixy="0" ixz="0"
+				  iyy="0.1" iyz="0"
+				  izz="0.1"
+			  />
+    	</inertial>
+    
+		<collision>
+			  <origin xyz="0 0 0" rpy=" 0 0 0"/> 
+			  <geometry>
+				<cylinder length="0.025" radius="0.0335"/>
+			  </geometry>
+			</collision>
+	</link>
+	<link name='leftb_wheel'>
+		<visual>
+			  <geometry>
+				<cylinder length="0.025" radius="0.0335"/>
+			  </geometry>
+		</visual>
+		<inertial>
+			  <mass value="0.033"/>
+			  <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+			  <inertia
+				  ixx="0.1" ixy="0" ixz="0"
+				  iyy="0.1" iyz="0"
+				  izz="0.1"
+			  />
+    	</inertial>
+		<collision>
+			  <origin xyz="0 0 0" rpy=" 0 0 0"/> 
+			  <geometry>
+				<cylinder length="0.025" radius="0.0335"/>
+			  </geometry>
+			</collision>
+	</link>
+
+	<link name='rightf_wheel'>
+		<visual>
+			  <geometry>
+				<cylinder length="0.025" radius="0.0335"/>
+			  </geometry>
+		</visual>
+		
+		<inertial>
+			  <mass value="0.033"/>
+			  <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+			  <inertia
+				  ixx="0.1" ixy="0" ixz="0"
+				  iyy="0.1" iyz="0"
+				  izz="0.1"
+			  />
+    		</inertial>
+    
+		<collision>
+			  <origin xyz="0 0 0" rpy=" 0 0 0"/> 
+			  <geometry>
+				<cylinder length="0.025" radius="0.0335"/>
+			  </geometry>
+			</collision>
+	</link>
+	<link name='leftf_wheel'>
+		<visual>
+			  <geometry>
+				<cylinder length="0.025" radius="0.0335"/>
+			  </geometry>
+		</visual>
+		<inertial>
+			  <mass value="0.033"/>
+			  <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+			  <inertia
+				  ixx="0.1" ixy="0" ixz="0"
+				  iyy="0.1" iyz="0"
+				  izz="0.1"
+			  />
+    	</inertial>
+		<collision>
+			  <origin xyz="0 0 0" rpy=" 0 0 0"/> 
+			  <geometry>
+				<cylinder length="0.025" radius="0.03"/>
+			  </geometry>
+			</collision>
+	</link>
+
+	<link name="camera">
+     <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+       <geometry>
+        <box size=".05 .05 .05"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0 0 0" rpy=" 0 0 0"/>
+      <inertia
+          ixx="0.000001" ixy="0" ixz="0"
+          iyy="0.000001" iyz="0"
+          izz="0.000001"
+      />
+    </inertial>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+       <geometry>
+        <box size=".005 .005 .005"/>
+      </geometry>
+    </collision>
+
+</link>
+
+
+<link name="hokuyo">
+     <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+       <geometry>
+	<mesh filename="package://udacity_bot/meshes/hokuyo.dae"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0 0 0" rpy=" 0 0 0"/>
+      <inertia
+          ixx="0.000001" ixy="0" ixz="0"
+          iyy="0.000001" iyz="0"
+          izz="0.000001"
+      />
+    </inertial>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+       <geometry>
+        <box size=".05 .05 .05"/>
+      </geometry>
+    </collision>
+
+</link>
+
+  <joint name="hokuyo_joint" type="fixed">
+    <origin xyz="-0.005 0 0.127" rpy="0 0 0"/>
+    <parent link="chassis"/>
+    <child link="hokuyo"/>
+  </joint>
+
+
+	<joint type="fixed" name="camera_joint">
+		<origin xyz="0 0 0.119" rpy="0 0 0"/>
+		<child link="camera"/>
+		<parent link="chassis"/>
+		<axis xyz="0 0 0" rpy="0 0 0"/>
+  	</joint>
+
+	<joint type="continuous" name="left__back_wheel_hinge">
+		<origin xyz="0.06 -0.07 0" rpy="1.570796 0 0"/>
+		<child link="leftb_wheel"/>
+		<parent link="chassis"/>
+		<axis xyz="0 1 0" rpy="0 0 0"/>
+		<limit effort="10000" velocity="1000"/>
+		<joint_properties damping="1.0" friction="1.0"/>
+  	</joint>
+  	
+  	<joint type="continuous" name="right_back_wheel_hinge">
+		<origin xyz="0.06 0.07 0" rpy="1.570796 0 0"/>
+		<child link="rightb_wheel"/>
+		<parent link="chassis"/>
+		<axis xyz="0 1 0" rpy="0 0 0"/>
+		<limit effort="10000" velocity="1000"/>
+		<joint_properties damping="1.0" friction="1.0"/>
+  	</joint>
+
+	<joint type="continuous" name="left__front_wheel_hinge">
+		<origin xyz="-0.06 -0.07 0" rpy="1.570796 0 0"/>
+		<child link="leftf_wheel"/>
+		<parent link="chassis"/>
+		<axis xyz="0 1 0" rpy="0 0 0"/>
+		<limit effort="10000" velocity="1000"/>
+		<joint_properties damping="1.0" friction="1.0"/>
+  	</joint>
+  	
+  	<joint type="continuous" name="right_front_wheel_hinge">
+		<origin xyz="-0.06 0.07 0" rpy="1.570796 0 0"/>
+		<child link="rightf_wheel"/>
+		<parent link="chassis"/>
+		<axis xyz="0 1 0" rpy="0 0 0"/>
+		<limit effort="10000" velocity="1000"/>
+		<joint_properties damping="1.0" friction="1.0"/>
+  	</joint>
+</robot>

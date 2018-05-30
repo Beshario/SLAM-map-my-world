@@ -217,5 +217,38 @@
     <child link="camera_rgbd_frame"/>
   </joint>
 
+
+<link name="hokuyo">
+     <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+       <geometry>
+	<mesh filename="package://slam_project/meshes/hokuyo.dae"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0 0 0" rpy=" 0 0 0"/>
+      <inertia
+          ixx="0.000001" ixy="0" ixz="0"
+          iyy="0.000001" iyz="0"
+          izz="0.000001"
+      />
+    </inertial>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+       <geometry>
+        <box size=".05 .05 .05"/>
+      </geometry>
+    </collision>
+
+</link>
+
+  <joint name="hokuyo_joint" type="fixed">
+    <origin xyz=".1 0 .16 " rpy="0 0 0" />
+    <parent link="chassis"/>
+    <child link="hokuyo"/>
+</joint>
 </robot>
 
