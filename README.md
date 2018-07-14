@@ -31,7 +31,7 @@ Now install missing dependencies using rosdep install:
 
 ```sh
 rosdep install -i rtabmap_ros
-rosdep install -i udacity_bot
+rosdep install -i slam_project
 ```
 
 Build the project then source the ROS environment variables:
@@ -52,9 +52,9 @@ curl -L https://s3-us-west-1.amazonaws.com/udacity-robotics/Term+2+Resources/P3+
 source the ROS environment variables when you open any new terminal. Open three terminals and  to the `~/catkin_ws/src/SLAM-map-my-world/launch` folder and run each command in one terminal:
 
 ```sh
-roslaunch slam_bot world.launch 
-roslaunch slam_bot teleop.launch
-roslaunch slam_bot mapping.launch
+roslaunch slam_project world.launch 
+roslaunch slam_project teleop.launch
+roslaunch slam_project mapping.launch
 ```
 
 <p align="center"><img src="./config/kitchen_occupancy.png"></p>
