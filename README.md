@@ -14,7 +14,7 @@ cd ~/catkin_ws
 catkin_make
 source devel/setup.bash
 ```
-
+<p align="center"><img src="./config/kitchen_occupancy.png"></p>
 Clone this repository to the `~/catkin_ws/src` folder
 
 ```sh
@@ -22,6 +22,9 @@ cd ~/catkin_ws/src
 git clone rtabmap_ros
 git clone https://github.com/Beshario/SLAM-map-my-world
 ```
+
+<p align="center"><img src="./config/kitchenmap.png"></p>
+
 setup and build RTAB-map from source using this link:
 
 [link](https://github.com/introlab/rtabmap_ros#build-from-source)
@@ -32,6 +35,7 @@ Now install missing dependencies using rosdep install:
 rosdep install -i rtabmap_ros
 rosdep install -i slam_bot
 ```
+<p align="center"><img src="./config/personalmap.png"></p>
 
 Build the project then source the ROS environment variables:
 
@@ -41,6 +45,7 @@ catkin_make
 source devel/setup.bash
 
 ```
+<p align="center"><img src="./config/personalmodel.png"></p>
 
 Download the kitchen dining room `*.world` file with collision models (some files do not include collision models):
 
