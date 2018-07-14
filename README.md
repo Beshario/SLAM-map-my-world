@@ -49,7 +49,7 @@ Download the kitchen dining room `*.world` file with collision models (some file
 curl -L https://s3-us-west-1.amazonaws.com/udacity-robotics/Term+2+Resources/P3+Resources/models.tar.gz | tar zx -C ~/.gazebo/
 ```
 
-source the ROS environment variables when you open any new terminal. Open three terminals and  to the `~/catkin_ws/src/slam_bot/launch` folder and run each command in one terminal:
+source the ROS environment variables when you open any new terminal. Open three terminals and  to the `~/catkin_ws/src/SLAM-map-my-world/launch` folder and run each command in one terminal:
 
 ```sh
 roslaunch slam_bot world.launch 
